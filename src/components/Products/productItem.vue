@@ -1,6 +1,6 @@
 <template>
   <li class="product">
-    <router-link tag="a" :to="{ name: 'productDetails', params: {id: product.id } }" class="product_link">
+    <router-link tag="a" :to="'/product/' + product.id" class="product_link">
       <img :src="product.image" class="product_img" alt>
       <h2 class="product_name">{{product.name}}</h2>
     </router-link>
@@ -15,11 +15,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import Filters from '../../filters.js';
+
 export default {
   props: ["product"],
   filters: {
-    euro: num => `€${num / 100}`,
-    dollars: num => `$${num / 100}`,
+    Filters,
   },
 };
 </script>

@@ -3,8 +3,13 @@ import VueRouter from 'vue-router';
 import App from './App.vue';
 import store from './store/store';
 import { routes } from './router';
+import filters from './filters';
 
 Vue.use(VueRouter);
+
+for(let name in filters) {
+  Vue.filter(name, filters[name]);
+}
 
 const router = new VueRouter({
   routes,
