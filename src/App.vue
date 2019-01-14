@@ -16,7 +16,7 @@ export default {
     appHeader: Header,
   },
   created() {
-    this.$store.dispatch("initProducts");
+    this.$store.dispatch("listenProductList");
   }
 };
 </script>

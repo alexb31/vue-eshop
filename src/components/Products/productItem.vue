@@ -4,6 +4,9 @@
       <img :src="product.image" class="product_img" alt>
       <h2 class="product_name">{{product.name}}</h2>
     </router-link>
+    <div class="product_description">
+      <p>{{ product.description }}</p>
+    </div>
     <div class="product_price">{{product.price | dollars}}</div>
     <div class="row justify-content-end">
       <button class="btn btn-primary">Add to cart</button>
@@ -16,8 +19,8 @@ export default {
   props: ["product"],
   filters: {
     euro: num => `€${num / 100}`,
-    dollars: num => `$${num / 100}`
-  }
+    dollars: num => `$${num / 100}`,
+  },
 };
 </script>
 

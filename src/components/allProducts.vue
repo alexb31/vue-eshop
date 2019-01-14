@@ -2,7 +2,7 @@
   <div>
     <button @click="navigateToHome" class="btn btn-primary">Go to Home</button>
     <ul class="products">
-      <app-product v-for="product in products" :product="product" >
+      <app-product-item v-for="product in products" :product="product" >
       </app-product>
     </ul>
     <router-view></router-view>
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import Product from './product.vue';
+import ProductItem from './Products/productItem.vue';
 
 export default {
   components: {
-    appProduct: Product,
+    appProduct: ProductItem,
   },
   computed: {
     products() {

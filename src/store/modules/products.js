@@ -1,26 +1,26 @@
-import products from '../../data/products';
+import productList from '../../data/products';
 
 const state = {
-  products: []
+  productList: []
 };
 
 const getters = {
   products: state => {
-    return state.products;
+    return state.productList;
   },
 };
 
 const mutations = {
-  'SET_PRODUCTS'(state, products) {
-    state.products = products;
+  'UPDATE_PRODUCT_LIST'(state, productList) {
+    state.productList = productList;
   }
 };
 
 const actions = {
-  initProducts: ({
+  listenProductList: ({
     commit
   }) => {
-    commit('SET_PRODUCTS', products)
+    commit('UPDATE_PRODUCT_LIST', productList)
   }
 };
 
