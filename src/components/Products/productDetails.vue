@@ -12,9 +12,7 @@
       <div class="ratings">
         <span>{{ item.quantity }} left in stock</span>
         <p class="pull-right">
-          <button :disabled="item.quantity === 0" class="btn btn-success">
-                            Add to cart
-                        </button>
+          <app-add-cart-btn></app-add-cart-btn>
         </p>
         <div class="clearfix"></div>
       </div>
@@ -28,13 +26,27 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import Filters from '../../filters.js';
+import AddCartBtn from '../Btn/AddToCartBtn.vue';
+import Filters from '../../filters';
 
 export default {
+  components: {
+    appAddCartBtn: AddCartBtn,
+  },
   filters: {
     Filters,
   },
   methods: {
+    ...mapActions(['updateCart']),
+    addItem() {
+      const order = {
+        item: Object.assign({}, this.item),
+        quantity: 1,
+        isAdd: true
+      };
+      console.log(order);
+      this.updateCart(order);
+    },
     navigateToProducts() {
       this.$router.push("/products");
     },

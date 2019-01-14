@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="products">
-      <app-product-item v-for="product in products" :product="product" >
+      <app-product-item v-for="product in products" :item="product" :key="product.id" >
       </app-product-item>
     </ul>
     <router-view></router-view>
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import ProductItem from './Products/productItem.vue';
 
 export default {
@@ -16,9 +17,7 @@ export default {
     appProductItem: ProductItem,
   },
   computed: {
-    products() {
-      return this.$store.getters.products;
-    },
+    ...mapGetters(['products']),
   },
   methods: {
     navigateToHome() {

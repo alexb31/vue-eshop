@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <h1>Online Store</h1>
     <div id="nav">
       <app-header></app-header>
     </div>
@@ -10,13 +9,18 @@
 
 <script>
 import Header from "./views/Header.vue";
+import { mapActions } from 'vuex';
 
 export default {
   components: {
     appHeader: Header,
   },
+  methods: {
+      ...mapActions(['getShoppingCart', 'listenToProductList'])
+    },
   created() {
     this.$store.dispatch("listenProductList");
+    // this.$store.dispatch("updateCart");
   }
 };
 </script>

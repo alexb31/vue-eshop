@@ -1,15 +1,17 @@
 <template>
   <li class="product">
-    <router-link tag="a" :to="'/product/' + product.id" class="product_link">
-      <img :src="product.image" class="product_img" alt>
-      <h2 class="product_name">{{product.name}}</h2>
+    <router-link tag="a" :to="'/product/' + item.id" class="product_link">
+      <img :src="item.image" class="product_img" alt>
+      <h2 class="product_name">{{item.name}}</h2>
     </router-link>
     <div class="product_description">
-      <p>{{ product.description }}</p>
+      <p>{{ item.description }}</p>
     </div>
-    <div class="product_price">{{product.price | dollars}}</div>
+    <div class="product_price">{{item.price | dollars}}</div>
     <div class="row justify-content-end">
-      <button class="btn btn-primary">Add to cart</button>
+      <button class="btn btn-success" :disabled="item.quantity === 0" @click="addItem">
+                        Add to cart
+                    </button>
     </div>
   </li>
 </template>
@@ -17,12 +19,27 @@
 <script>
 import { mapActions } from 'vuex';
 import Filters from '../../filters.js';
+import AddCartBtn from '../Btn/AddToCartBtn.vue';
 
 export default {
-  props: ["product"],
+  props: ["item"],
+  components: {
+    appAddCartBtn: AddCartBtn,
+  },
+  methods: {
+    ...mapActions(['updateCart']),
+    addItem() {
+      const order = {
+        item: Object.assign({}, this.item),
+        quantity: 1,
+        isAdd: true
+      };
+      this.updateCart(order);
+    }
+  },
   filters: {
     Filters,
-  },
+  }
 };
 </script>
 
