@@ -4,6 +4,7 @@ import App from './App.vue';
 import store from './store/store';
 import { routes } from './router';
 import filters from './filters';
+import { firebaseListener } from './config/firebaseConfig';
 
 Vue.use(VueRouter);
 

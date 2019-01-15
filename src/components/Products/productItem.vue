@@ -2,16 +2,15 @@
   <li class="product">
     <router-link tag="a" :to="'/product/' + item.id" class="product_link">
       <img :src="item.image" class="product_img" alt>
-      <h2 class="product_name">{{item.name}}</h2>
+      <h2 class="product_name">{{item.title}}</h2>
     </router-link>
     <div class="product_description">
       <p>{{ item.description }}</p>
     </div>
     <div class="product_price">{{item.price | dollars}}</div>
     <div class="row justify-content-end">
-      <button class="btn btn-success" :disabled="item.quantity === 0" @click="addItem">
-                        Add to cart
-                    </button>
+      <button @click="addItem()" :disabled="item.quantity === 0" class="btn btn-success" data-toggle="modal" data-target="#shoppingCart">Add To Cart</button>
+      <app-add-cart-modal></app-add-cart-modal>
     </div>
   </li>
 </template>
@@ -20,11 +19,13 @@
 import { mapActions } from 'vuex';
 import Filters from '../../filters.js';
 import AddCartBtn from '../Btn/AddToCartBtn.vue';
+import AddCartModal from '../Btn/AddToCartModal.vue';
 
 export default {
   props: ["item"],
   components: {
     appAddCartBtn: AddCartBtn,
+    appAddCartModal: AddCartModal,
   },
   methods: {
     ...mapActions(['updateCart']),
@@ -63,4 +64,3 @@ export default {
   cursor: pointer;
 }
 </style>
-

@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Header from "./views/Header.vue";
 import { mapActions } from 'vuex';
+import Header from "./views/Header.vue";
 
 export default {
   components: {
@@ -19,7 +19,7 @@ export default {
       ...mapActions(['getShoppingCart', 'listenToProductList'])
     },
   created() {
-    this.$store.dispatch("listenProductList");
+    this.listenToProductList();
     // this.$store.dispatch("updateCart");
   }
 };

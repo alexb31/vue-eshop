@@ -1,14 +1,15 @@
 <template>
-  <button @click="addItem" :disabled="item.quantity === 0" class="btn btn-success">Add To Cart</button>
-</template>
+<div>
+  <button @click="addItem()" :disabled="item.quantity === 0" class="btn btn-success" data-toggle="modal" data-target="#shoppingCart">Add To Cart</button>
 
+</div>
+</template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-
 export default {
   computed: {
-    ...mapGetters(['products']),
+    ...mapGetters(['products', 'item']),
     item() {
       let id = this.$route.params.id;
       if (this.products.length >= id) {

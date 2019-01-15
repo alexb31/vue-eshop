@@ -1,4 +1,4 @@
-import productList from '../../data/products';
+// import productList from '../../data/products';
 
 const state = {
   productList: []

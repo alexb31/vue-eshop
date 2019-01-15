@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import ProductItem from './Products/productItem.vue';
 
 export default {
@@ -20,6 +20,7 @@ export default {
     ...mapGetters(['products']),
   },
   methods: {
+    ...mapActions(['updateCart']),
     navigateToHome() {
       this.$router.push('/');
     }
