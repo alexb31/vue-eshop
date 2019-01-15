@@ -10,7 +10,7 @@
     <div class="product_price">{{item.price | dollars}}</div>
     <div class="row justify-content-end">
       <button @click="addItem()" :disabled="item.quantity === 0" class="btn btn-success" data-toggle="modal" data-target="#shoppingCart">Add To Cart</button>
-      <app-add-cart-modal></app-add-cart-modal>
+      <!-- <app-add-cart-modal></app-add-cart-modal> -->
     </div>
   </li>
 </template>

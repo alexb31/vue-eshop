@@ -9,9 +9,10 @@
         <router-link to="/register" tag="li"><a>Register</a></router-link>
         <router-link to="/login" tag="li"><a>Login</a></router-link>
         <li>
-          <router-link to="/cart" class="btn btn-success navbar-btn" tag="button">
-            Checkout <span class="badge">{{ numItems }} ({{ cartValue | dollars }})</span></router-link>
-        </li>
+        <router-link to="/cart" class="btn btn-success navbar-btn" tag="button">
+          Checkout <span class="badge">{{ numItems }} ({{ cartValue | dollars}})</span>
+        </router-link>
+      </li>
       </ul>
     </div>
   </nav>
@@ -27,7 +28,7 @@ export default {
     Filters
   },
   computed: {
-    ...mapGetters(['cartItemList', 'cartValue']),
+    ...mapGetters(['cartValue', 'cartItemList']),
     numItems() {
       return this.cartItemList.reduce((total, item) => {
         total += item.quantity;

@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import Filters from '../../filters';
 import { mapActions } from 'vuex';
+import Filters from '../../filters';
 
 export default {
   props: ['cartItem'],

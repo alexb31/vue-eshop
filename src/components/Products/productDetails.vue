@@ -5,7 +5,7 @@
     <div class="thumbnail">
       <img class="img-responsive" :src="item.image" alt="">
       <div class="caption-full">
-        <h4 class="pull-right">$ {{ item.price }}</h4>
+        <h4 class="pull-right">{{ item.price | dollars }}</h4>
         <h4> {{ item.title }}</h4>
         <p> {{ item.description }} </p>
       </div>
@@ -13,6 +13,7 @@
         <span>{{ item.quantity }} left in stock</span>
         <p class="pull-right">
           <app-add-cart-btn></app-add-cart-btn>
+          <!-- <app-add-cart-modal></app-add-cart-modal> -->
         </p>
         <div class="clearfix"></div>
       </div>
@@ -27,11 +28,13 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import AddCartBtn from '../Btn/AddToCartBtn.vue';
+import AddCartModal from '../Btn/AddToCartModal.vue';
 import Filters from '../../filters';
 
 export default {
   components: {
     appAddCartBtn: AddCartBtn,
+    appAddCartModal: AddCartModal,
   },
   filters: {
     Filters,
